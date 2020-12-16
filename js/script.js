@@ -86,19 +86,21 @@ $('.read-more').click(function (param) {
     }
 })
 
-
-$(window).on('scroll',function () {  
+$(window).on('scroll',function (param) {  
+    param.preventDefault()
     if ($(window).scrollTop() > 100) {
-        $('.js-btn-top').removeClass('hidden')
-        $('.js-btn-top').addClass('show')
-        $('.js-btn-top').click(function () {  
-            $(window).scrollTop(0)
+        $('.js-btn-top').removeClass('hidden').css('bottom', 30)
+        $('.js-btn-top').click(function (param) {  
+            // param.preventDefault()
+            $('html').stop().animate({
+                scrollTop: 0
+            })
         })
     } else {
         $('.js-btn-top').addClass('hidden')
-        $('.js-btn-top').removeClass('show')
+        $('.js-btn-top').addClass('hidden').css('bottom', '-100%')
     }
-
+    // console.log(1);
 })
 
 /* Задание 1
